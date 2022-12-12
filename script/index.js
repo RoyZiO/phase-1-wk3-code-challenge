@@ -43,12 +43,18 @@ function sideNavBar() {
   // print (side[i])
   side[i].textContent = data2.title
 //  print(data2.title)
- }while(i<14)   
- const side = document.querySelectorAll('a#others'); 
- print (side[0].textContent)
+ } while (i<14)  
+
+ print (side[i].textContent)
   })
+
+}
+sideNavBar();
+
+
   // side bar navigation menu displayer
 document.getElementById("openNav").addEventListener("click", 
+
 function openNav() {
     document.getElementById("mySideNav").style.width = "400px";
     //document.querySelector('div.header').style.marginLeft = "350px";
@@ -63,8 +69,7 @@ function openNav() {
   });
   print(`hello`)
 
-}
-sideNavBar();
+
 
 
 
@@ -73,11 +78,10 @@ function otherMovies() {
     addEventListener('onClick',()=>{
     print("done")
     fetch('http://localhost:3000/films')
-  .then(res=>(res.json()))
+  .then(response=>(response.json()))
   .then(data=>{
     print(data)
     
-     
     })
   
   })
