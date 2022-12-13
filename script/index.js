@@ -13,7 +13,7 @@ function fetchMovies() {
     description = document.querySelector('p.card-text')
     info = document.querySelectorAll('li.list-group-item')
     footer = document.querySelector('small'); print(info)
-    // descrition
+   
     image.src = data[0].poster 
     title.textContent = data[0].title
     description.textContent = data[0].description
@@ -37,18 +37,18 @@ function sideNavBar() {
  do{
   i+=1
   data2 = data.films[i]
-  // data =data.films;print(data[0].title)
+ 
   const side = document.querySelectorAll('a#others'); 
-  // print (side[i])
+  
   side[i].textContent = data2.title
-//  print(data2.title)
+
  } while (i<14)  
 
  print (side[i].textContent)
   })
 
 }
-sideNavBar();
+
 
 
   // Adding a click event for opening  the sidebar navigation plane 
