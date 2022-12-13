@@ -20,8 +20,7 @@ function fetchMovies() {
     info[0].textContent = `Showtime =   ${data[0].showtime}`
     info[1].textContent = `Runtime =   ${data[0].runtime} mins`
     info[2].textContent = `Available-Tickets =  ${(data[0].capacity)- (data[0].tickets_sold)}`
-    //remainder = (data[0].capacity)-(data[0].tickets_sold)
-    //footer.textContent = `tickets-Remaining:${remainder}`  
+    
 
     })
 }
@@ -52,26 +51,28 @@ function sideNavBar() {
 sideNavBar();
 
 
-  // side bar navigation menu displayer
+  // Adding a click event for opening  the sidebar navigation plane 
 document.getElementById("openNav").addEventListener("click", 
 
 function openNav() {
     document.getElementById("mySideNav").style.width = "400px";
-    //document.querySelector('div.header').style.marginLeft = "350px";
     document.querySelector('div.card').style.marginLeft = "400px";
-    // print( document.getElementById("mySidenav"))
+    
   });
+
+  //click event for closing the sidebar navigation plane 
   document.getElementById("closeNav").addEventListener("click", 
   function closeNav() {
     document.getElementById("mySideNav").style.width = "0";
-    //document.querySelector('div.header').style.marginLeft = "0";
+
     document.querySelector('div.card').style.marginLeft = "0";
   });
   print(`hello`)
 
 
 
-
+//function to fetch the other movies from the database and display them on the navigation plane
+//Clicking event to display ticket information on the webpage when the user clicks on a particular movie
 
 function otherMovies() {
     const as = document.querySelectorAll('a.others');print(as)
@@ -90,5 +91,3 @@ function otherMovies() {
 otherMovies();
   
 
-
-// side navigation menu bar content displayer
