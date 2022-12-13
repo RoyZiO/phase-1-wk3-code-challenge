@@ -7,19 +7,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
     fetchMovies(url)
 })
 
-function fetchMOvies(url) {
-  fetch(url)
+function fetchMOvies() {
+  fetch('http://localhost:3000/films')
     .then(response => response.json())
-    .then(movies => {
-        movies.forEach(movie => {
-            displayMovie(movie)
+    .then(films => {
+        films.forEach(films => {
+            displayMovie(films)
         });
 
 })
 
+function displayMovie(movie){
+   
+  const a = document.createElement('a')
+  a.style.cursor="pointer"                                ///Not yt implemented
+  a.textContent= (movie.title).toUpperCase()
+  listHolder.appendChild(a)
+  otherMovies();
+}
 }
 
-function displayMovies() {
+function currentMovie() {
   fetch(url)
 
   .then(response => (response.json()))
@@ -36,16 +44,16 @@ function displayMovies() {
 
   description.textContent = data[0].description
 
-  info[0].textContent = `Showtime =   ${data[0].showtime}`
+  info[0].textContent = `Showtime:   ${data[0].showtime}`
 
-  info[1].textContent = `Runtime =   ${data[0].runtime} mins`
+  info[1].textContent = `Runtime:  ${data[0].runtime} mins`
 
-  info[2].textContent = `Available-Tickets =  ${(data[0].capacity)- (data[0].tickets_sold)}`
+  info[2].textContent = `Available-Tickets:  ${(data[0].capacity)- (data[0].tickets_sold)}`
   
 
   })
 }
-displayMovies();
+currentMovie();
 
 
 // Adding a click event for opening  the sidebar navigation plane 
@@ -64,16 +72,15 @@ function closeNav() {
 
   document.querySelector('div.card').style.marginLeft = "0";
 });
-print(`hello`)
 
 
 
 
-function sideNavBar() {
 
-const side = document.guerySelectorAll('a.others'); 
 
-  fetch(url)
+const side = document.guerySelectorAll('a.film-group-item'); 
+
+  fetch('http://localhost:3000/films')
 .then(response => (response.json()))
 
 .then(data=>{
@@ -84,33 +91,33 @@ do{
 i+=1
 data2 = data.films[i]
 
-
+const side = document.querySelectorAll('a.film-group-item');
 
 side[i].textContent = data2.title
 
 } while (i<14)  
+
+const side = document.querySelectorAll('a.film-group-item');
 
 print (side[0].textContent)
 
 })
 
 
-}
-sideNavBar();
+
+
 
 
 //function to fetch the other movies from the database and display them on the navigation plane
 //Clicking event to display ticket information on the webpage when the user clicks on a particular movie
 
 function otherMovies() {
-  const mov = document.querySelectorAll('a.others');
-  print(mov[14].textContent);
+  const mov = document.querySelectorAll('a.film-group-item');
+  print(mov[i].textContent);
   
-  mov[0].document.addEventListener('click',(event)=> {
+  mov[i].document.addEventListener('click',(event)=> {
     event.preventDefault();
     print(event.target.textContent);
-
-    print("done")
 
   fetch(url)
 .then(response=>(response.json()))
