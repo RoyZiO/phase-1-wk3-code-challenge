@@ -1,120 +1,40 @@
 <!--CODE GOES HERE-->
 
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flatdango Movies</title>
-    <link rel="stylesheet" href="./style/bootstrap.css">
-    <link rel="stylesheet" href="./style/main.css">
+    <title>Flatdango Movie Theater</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-
- <!--Creating the navigation bar for Flatdango-->
-      
- <nav class = "navbar navbar-inverse bg-dark">
-  <div class = "container-fluid text bg-dark"> 
-      <button id="openNav" class="btn btn-success">MENU</button>
-      <a class = "navbar-brand text-light" >FLATDANGO</a>
-  <form class = "d-flex" role="search">
-      <input class = "form control" type = "text" placeholder = "Search Flatdango" id = "search"/>
-      <button class = "btn btn-outline-info ms-5" id = "searchBtn">SEARCH</button>
-  </form>
-</nav>
-  </div>
-
-
-<!--Creating the content for the main container-->
-
-<div class="card mb-5" style="max-width: 840px ">
-  <div class="row">
-    <div class="col-md-3">
-      <img src="" id="poster" class="card-img-top" alt="...">
-    </div>
-    <div class="col-6 card-body">
-        <h5 class="card-title">Movie title</h5>
-        <p class="card-text">This is the description of the Movie.</p>
-        
-        <a href="#" class="btn btn-primary">BUY TICKET</a>  
+  <h1 id="head">FLAT<span>DANGO MOVIE THE</span>ATER</h1>
+   <div class="gird-container">
+    <div class="box">
+        <div id="menu">
+<!-- list of animals goes here -->
         </div>
-
-
-
-        <div class="card-footer text-muted">
-          <ul class="list-group" >
-              <li id="runtime" class="list-group-item">Runtime: </li>
-              <li id="showtime" class="list-group-item">Showtime: </li>
-              <li id="availabletickets" class="list-group-item">Available Tickets:</li>
-            </ul>
-             
+        <div id="movieDetail">
+            <img id="pic" src="" alt="movie pic"></img>
+            <ul id="info">
+                <br>
+               <span id="label" class="too">Title:</span> <span id="title">hi</span>
+               <br>
+               <span id="label">Showtime:</span><span id="showtime">hi</span>
+               <br>
+               <span id="label">Runtime:</span><span id="runtime">hi</span>
+               <br>
+               <span id="label">Tickets Available:</span><span id="tickets">hi</span>
+               <br>
+               <span id="label">Description:</span><span id = "description"></span>
+               <br>
+               <br>
+               <span id="button"></span>
         </div>
-      </div>
     </div>
-
-    
-<!--Developing the navigation plane on the left side of webpage-->
-
-  <div id= "mySideNav" class="sidenav">
-    <button id="closeNav" class="closebtn btn btn-danger">CLOSE</button>
-    <div class="col-7">
-      <div class="list-container">
-        <ul class="film-group" id="film-titles">
-<!-- Menu in the navigation plane -->
-          <li>
-            <a href="#" class="film-group-item">The Giant Gila Monster</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Manos: The Hands Of Fate</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Time Chasers</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">The Touch Of Satan</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Santa Claus Conquers The Martians</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Track Of The Moon Beast</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">The Skydivers</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">The Killer Shrews</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Project Moon Base</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">The Giant Spider Invasion</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Catalina Caper</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Secret Agent Super Dragon</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Wild Rebels</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Danger: Diabolik</a>
-          </li>
-          <li>
-            <a href="#" class="film-group-item">Village Of The Giants</a>
-          </li>
-            
-        </ul>
-        
-      </div>
-    </div>
-
-    <script src="./script/index.js"></script>
-    <script src="./script/bootstrap.js"></script>
-
+   </div>
 </body>
+<script type="text/javascript" src="./script/index.js"></script>
+
 </html>

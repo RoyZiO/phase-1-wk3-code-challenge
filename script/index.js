@@ -1,131 +1,119 @@
-print =  (value) => {console.log(value)}
 
-let url = 'http://localhost:3000/films'
-const listHolder = document.getElementById('film-titles')
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementsByClassName('film-group-item')[0].remove()
-    fetchMovies(url)
-})
 
-function fetchMOvies() {
-  fetch('http://localhost:3000/films')
-    .then(response => response.json())
-    .then(films => {
-        films.forEach(films => {
-            displayMovie(films)
-        });
-
-})
-
-function displayMovie(movie){
-   
-  const a = document.createElement('a')
-  a.style.cursor="pointer"                                ///Not yt implemented
-  a.textContent= (movie.title).toUpperCase()
-  listHolder.appendChild(a)
-  otherMovies();
+//fetches data from the mock server.T
+function fetchData() {
+  fetch("  http://localhost:3000/films")
+    .then((response) => response.json())
+    .then((data) => appendFirstMovie(data));
 }
-}
-
-function currentMovie() {
-  fetch(url)
-
-  .then(response => (response.json()))
-  .then(data => {
-      data.films 
-      image = document.querySelector('img.card-img-top')
-      title = document.querySelector('h5.card-title')
-      description = document.querySelector('p.card-text')
-      info = document.querySelectorAll('li.list-group-item')
+fetchData();
  
-  image.src = data[0].poster 
-
-  title.textContent = data[0].title
-
-  description.textContent = data[0].description
-
-  info[0].textContent = `Showtime:   ${data[0].showtime}`
-
-  info[1].textContent = `Runtime:  ${data[0].runtime} mins`
-
-  info[2].textContent = `Available-Tickets:  ${(data[0].capacity)- (data[0].tickets_sold)}`
-  
-
-  })
+//append first movie when the page loads
+function appendFirstMovie(data) {
+  let first = data[0];
+  let butonn = document.getElementById("button");
+  butonn.innerHTML = "";
+  let image = document.getElementById("pic");
+  let title = document.getElementById("title");
+  let runtime = document.getElementById("runtime");
+  let showtime = document.getElementById("showtime");
+  let tickets = document.getElementById("tickets");
+  let description = document.getElementById("description");
+  let button = document.createElement("button");
+  button.id = "btn";
+  button.textContent = "Buy Ticket";
+  button.addEventListener("click", () => {
+     first.tickets_sold += 1;
+    handleBuying(first)
+    let total = first.capacity - first.tickets_sold;
+    if (first.tickets_sold < first.capacity) {
+      document.getElementById("tickets").innerHTML = total;
+    }
+    else if (first.tickets_sold = first.capacity) {
+      document.getElementById("tickets").innerHTML = "*No tickets available";
+      handleBuying(first)
+    }
+  });
+  title.textContent = first.title;
+  runtime.textContent = first.runtime;
+  showtime.textContent = first.showtime;
+  tickets.textContent = first.capacity - first.tickets_sold;
+  description.textContent = first.description;
+  image.src = `
+    ${first.poster}
+    `;
+  butonn.appendChild(button);
 }
-currentMovie();
 
+//fetches list of movies in the menu section
+function appendMenu() {
+  fetch("  http://localhost:3000/films")
+    .then((response) => response.json())
+    .then((data) => menuTitles(data));
+}
+appendMenu();
 
-// Adding a click event for opening  the sidebar navigation plane 
-document.getElementById("openNav").addEventListener("click", 
+//Displays menu titles on the menu section
+function menuTitles(data) {
+  data.forEach((item) => {
+    let title = document.createElement("li");
+    title.id = "list";
+    title.addEventListener("click", () => {
+      const i = item.id;
+      appendIndividualDetails(data[i - 1]);
+    });
+    let menu = document.getElementById("menu");
+    title.textContent = item.title;
+    menu.appendChild(title);
+  });
+}
 
-function openNav() {
-  document.getElementById("mySideNav").style.width = "400px";
-  document.querySelector('div.card').style.marginLeft = "400px";
-  
-});
+//appends details of the specific name that is clicked on the
+function appendIndividualDetails(item) {
+  let butonn = document.getElementById("button");
+  butonn.innerHTML = "";
+  let image = document.getElementById("pic");
+  let title = document.getElementById("title");
+  let runtime = document.getElementById("runtime");
+  let showtime = document.getElementById("showtime");
+  let tickets = document.getElementById("tickets");
+  let description = document.getElementById("description");
+  let button = document.createElement("button");
+  button.id = "btn";
+  button.textContent = "Buy Ticket";
+  let total = item.capacity - item.tickets_sold;
+  //adds button for buying tickets.
+  button.addEventListener("click", () => {
+    //if tickets available is greater than 0 the total amount decreses by one every time it is pressed otherwise it prints a message
+    item.tickets_sold += 1;
+    handleBuying(item)
+    let total = item.capacity - item.tickets_sold;
+    if (item.tickets_sold < item.capacity) {
+      document.getElementById("tickets").innerHTML = total;
+    }
+    else if (item.tickets_sold = item.capacity) {
+      document.getElementById("tickets").innerHTML = "*No tickets available";
+      handleBuying(item)
+    }
+  });
 
-//click event for closing the sidebar navigation plane 
-document.getElementById("closeNav").addEventListener("click", 
-function closeNav() {
-  document.getElementById("mySideNav").style.width = "0";
+  title.textContent = item.title;
+  runtime.textContent = item.runtime;
+  showtime.textContent = item.showtime;
+  tickets.textContent = item.capacity - item.tickets_sold;
+  description.textContent = item.description;
+  image.src = `
+    ${item.poster}
+    `;
+  butonn.appendChild(button);
+}
 
-  document.querySelector('div.card').style.marginLeft = "0";
-});
-
-
-
-
-
-
-const side = document.guerySelectorAll('a.film-group-item'); 
-
-  fetch('http://localhost:3000/films')
-.then(response => (response.json()))
-
-.then(data=>{
-
-let i = 0
-do{
-
-i+=1
-data2 = data.films[i]
-
-const side = document.querySelectorAll('a.film-group-item');
-
-side[i].textContent = data2.title
-
-} while (i<14)  
-
-const side = document.querySelectorAll('a.film-group-item');
-
-print (side[0].textContent)
-
-})
-
-
-
-
-
-
-//function to fetch the other movies from the database and display them on the navigation plane
-//Clicking event to display ticket information on the webpage when the user clicks on a particular movie
-
-function otherMovies() {
-  const mov = document.querySelectorAll('a.film-group-item');
-  print(mov[i].textContent);
-  
-  mov[i].document.addEventListener('click',(event)=> {
-    event.preventDefault();
-    print(event.target.textContent);
-
-  fetch(url)
-.then(response=>(response.json()))
-.then(data=>{
-  print(data)
-  
+function handleBuying(ticketsobj){
+  fetch(`  http://localhost:3000/films/${ticketsobj.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ticketsobj),
   })
-
-})
-
+   .then((resp) => resp.json())
+   .then((obj) => console.log(obj))
 }
