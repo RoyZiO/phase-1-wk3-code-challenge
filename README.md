@@ -23,6 +23,12 @@ theater.
  - To initiate the backend, run the following command while inside the project directory: json-server --watch db.json
  - The server can be tested by visiting http://localhost:3000/films through the browser, which is also the base URL for the API. 
 
+ ## Project Link
+
+ - Before accessing the link, make sure you have initiated the backend process using the command: json-server --watch db.json
+
+ - The link to the project can be found [here](http://127.0.0.1:5500/index.html#)
+
 
  # Guidelines
 
