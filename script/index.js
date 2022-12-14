@@ -71,13 +71,21 @@ function menuTitles(data) {
 //appends details of the specific name that is clicked on the
 function appendIndividualDetails(item) {
   let butonn = document.getElementById("button");
+
   butonn.innerHTML = "";
+
   let image = document.getElementById("pic");
+
   let title = document.getElementById("title");
+
   let runtime = document.getElementById("runtime");
+
   let showtime = document.getElementById("showtime");
+
   let tickets = document.getElementById("tickets");
+
   let description = document.getElementById("description");
+  
   let button = document.createElement("button");
   button.id = "btn";
   button.textContent = "Buy Ticket";
