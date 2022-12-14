@@ -1,6 +1,6 @@
 
 
-//fetches data from the mock server.T
+//First, we fetch the data on films from the mock server to initialize the webpage
 function fetchData() {
   fetch("  http://localhost:3000/films")
     .then((response) => response.json())
@@ -8,7 +8,9 @@ function fetchData() {
 }
 fetchData();
  
-//append first movie when the page loads
+//The function below is created to append (upload) the first film from our JSON file, displaying the poster, showtime, runtime, and available tickets
+
+// The function also creates two buttons, one for the menu and the other for the ticket purchase button. 
 function appendFirstMovie(data) {
   let first = data[0];
   let butonn = document.getElementById("button");
@@ -22,6 +24,8 @@ function appendFirstMovie(data) {
   let button = document.createElement("button");
   button.id = "btn";
   button.textContent = "Buy Ticket";
+
+  //Add an clicking event for the menu, to enable the selection of a particular movie title to present the details
   button.addEventListener("click", () => {
      first.soldTicket += 1;
     handleBuying(first)
@@ -30,7 +34,7 @@ function appendFirstMovie(data) {
       document.getElementById("tickets").innerHTML = total;
     }
     else if (first.soldTicket = first.capacity) {
-      document.getElementById("tickets").innerHTML = "SOLD OUT!";
+      document.getElementById("tickets").innerHTML = "SOLD OUT!";    // Once all the tickets have been sold, the result of pressing the "Buy Ticket" button will be a string: "SOLD OUT"
       handleBuying(first)
     }
   });
@@ -45,7 +49,7 @@ function appendFirstMovie(data) {
   butonn.appendChild(button);
 }
 
-//fetches list of movies in the menu section
+//The function 'appendMenu()'fetches the list of movies  
 function appendMenu() {
   fetch("  http://localhost:3000/films")
     .then((response) => response.json())
@@ -53,7 +57,7 @@ function appendMenu() {
 }
 appendMenu();
 
-//Displays menu titles on the menu section
+//The function 'menuTitles()' displays the list of movies in the menu section of the webpage
 function menuTitles(data) {
   data.forEach((item) => {
     let title = document.createElement("li");
@@ -68,6 +72,8 @@ function menuTitles(data) {
   });
 }
 
+//The function 'clickMenu()' is called to display a pointer whenever the user hovers over the menu section
+ 
 function clickMenu() {
   const menuPointer = document.getElementById('menu')
     menuPointer.style.cursor="pointer"
@@ -75,7 +81,7 @@ function clickMenu() {
 }
 clickMenu();
 
-//appends details of the specific name that is clicked on the
+//The function appendIndividualDetails() displays the details of the specific movie that is selected by the user
 function appendIndividualDetails(item) {
   let mainButton = document.getElementById("button");
 
@@ -93,14 +99,16 @@ function appendIndividualDetails(item) {
 
   let description = document.getElementById("description");
 
+  // Add a button to enable the purchase of tickets
+
   let button = document.createElement("button");
   button.id = "btn";
   button.textContent = "Buy Ticket";
   let total = item.capacity - item.tickets_sold;
 
 
-
-  //adds button for buying tickets.
+  //Add clicking event to reduce the number of tickes by 1 whenever the user clicks on "Buy Tickets"
+  
   button.addEventListener("click", () => {
     //if tickets available is greater than 0 the total amount decreses by one every time it is pressed otherwise it prints a message
 
