@@ -34,9 +34,9 @@ function currentMovie() {
   .then(data => {
       data.films 
       image = document.querySelector('img.card-img-top')
-  title = document.querySelector('h5.card-title')
-  description = document.querySelector('p.card-text')
-  info = document.querySelectorAll('li.list-group-item')
+      title = document.querySelector('h5.card-title')
+      description = document.querySelector('p.card-text')
+      info = document.querySelectorAll('li.list-group-item')
  
   image.src = data[0].poster 
 
