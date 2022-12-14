@@ -23,21 +23,21 @@ function appendFirstMovie(data) {
   button.id = "btn";
   button.textContent = "Buy Ticket";
   button.addEventListener("click", () => {
-     first.tickets_sold += 1;
+     first.soldTicket += 1;
     handleBuying(first)
-    let total = first.capacity - first.tickets_sold;
-    if (first.tickets_sold < first.capacity) {
+    let total = first.capacity - first.soldTicket;
+    if (first.soldTicket < first.capacity) {
       document.getElementById("tickets").innerHTML = total;
     }
-    else if (first.tickets_sold = first.capacity) {
-      document.getElementById("tickets").innerHTML = "*No tickets available";
+    else if (first.soldTicket = first.capacity) {
+      document.getElementById("tickets").innerHTML = "SOLD OUT!";
       handleBuying(first)
     }
   });
   title.textContent = first.title;
   runtime.textContent = first.runtime;
   showtime.textContent = first.showtime;
-  tickets.textContent = first.capacity - first.tickets_sold;
+  tickets.textContent = first.capacity - first.soldTicket;
   description.textContent = first.description;
   image.src = `
     ${first.poster}
@@ -68,11 +68,18 @@ function menuTitles(data) {
   });
 }
 
+function clickMenu() {
+  const menuPointer = document.getElementById('menu')
+    menuPointer.style.cursor="pointer"
+    
+}
+clickMenu();
+
 //appends details of the specific name that is clicked on the
 function appendIndividualDetails(item) {
-  let butonn = document.getElementById("button");
+  let mainButton = document.getElementById("button");
 
-  butonn.innerHTML = "";
+  mainButton.innerHTML = "";
 
   let image = document.getElementById("pic");
 
@@ -85,22 +92,28 @@ function appendIndividualDetails(item) {
   let tickets = document.getElementById("tickets");
 
   let description = document.getElementById("description");
-  
+
   let button = document.createElement("button");
   button.id = "btn";
   button.textContent = "Buy Ticket";
   let total = item.capacity - item.tickets_sold;
+
+
+
   //adds button for buying tickets.
   button.addEventListener("click", () => {
     //if tickets available is greater than 0 the total amount decreses by one every time it is pressed otherwise it prints a message
+
+
     item.tickets_sold += 1;
     handleBuying(item)
+
     let total = item.capacity - item.tickets_sold;
     if (item.tickets_sold < item.capacity) {
       document.getElementById("tickets").innerHTML = total;
     }
     else if (item.tickets_sold = item.capacity) {
-      document.getElementById("tickets").innerHTML = "*No tickets available";
+      document.getElementById("tickets").innerHTML = " SOLD OUT!";
       handleBuying(item)
     }
   });
@@ -113,11 +126,11 @@ function appendIndividualDetails(item) {
   image.src = `
     ${item.poster}
     `;
-  butonn.appendChild(button);
+  mainButton.appendChild(button);
 }
 
 function handleBuying(ticketsobj){
-  fetch(`  http://localhost:3000/films/${ticketsobj.id}`, {
+  fetch(`http://localhost:3000/films/${ticketsobj.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(ticketsobj),
