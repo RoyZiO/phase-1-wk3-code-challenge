@@ -87,7 +87,7 @@ function appendIndividualDetails(item) {
 
   mainButton.innerHTML = "";
 
-  let image = document.getElementById("pic");
+  let image = document.getElementById("pic");                                 //These get requests are to display the other 14 movies
 
   let title = document.getElementById("title");
 
