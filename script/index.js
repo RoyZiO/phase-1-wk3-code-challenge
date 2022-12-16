@@ -2,7 +2,7 @@
 
 //First, we fetch the data on films from the mock server to initialize the webpage
 function fetchData() {
-  fetch("  http://localhost:3000/films")
+  fetch("  https://royzio.github.io/wk3-challenge-data/db.json")
     .then((response) => response.json())
     .then((data) => appendFirstMovie(data));
 }
@@ -51,7 +51,7 @@ function appendFirstMovie(data) {
 
 //The function 'appendMenu()'fetches the list of movies  
 function appendMenu() {
-  fetch("  http://localhost:3000/films")
+  fetch("  https://royzio.github.io/wk3-challenge-data/db.json")
     .then((response) => response.json())
     .then((data) => menuTitles(data));
 }
@@ -138,7 +138,7 @@ function appendIndividualDetails(item) {
 }
 
 function handleBuying(ticketsobj){
-  fetch(`http://localhost:3000/films/${ticketsobj.id}`, {
+  fetch(`https://royzio.github.io/wk3-challenge-data/db.json/${ticketsobj.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(ticketsobj),
