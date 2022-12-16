@@ -21,13 +21,13 @@ theater.
  - Download the db.json file from the "Prerequisite data" section of the assignment.
  - Make sure that you have installed the json-server globally. If not, run this command: npm install -g json-server. This will install json-server and help to get the backend started.
  - To initiate the backend, run the following command while inside the project directory: json-server --watch db.json
- - The server can be tested by visiting http://localhost:3000/films through the browser, which is also the base URL for the API. 
+ - The server can be tested by visiting https://api.npoint.io/cc9798cc5259069d3019/films/ through the browser, which is also the base URL for the API. 
 
- ## Project Link
+ ## Live Link to the Application 
 
  - Before accessing the link, make sure you have initiated the backend process using the command: json-server --watch db.json
 
- - The link to the project can be found [here](http://127.0.0.1:5500/index.html#)
+ - The live link to the project can be found [here](https://api.npoint.io/cc9798cc5259069d3019/films/)
 
 
  # Guidelines
@@ -51,6 +51,6 @@ theater.
  
  - This project was contributed by:
 
-        Roy Nzioki Ngei: https://github.com/RoyZiO
+      Roy Nzioki Ngei: [Github](https://github.com/RoyZiO)
         
          
