@@ -27,7 +27,7 @@ theater.
 
  - Before accessing the link, make sure you have initiated the backend process using the command: json-server --watch db.json
 
- - The live link to the project can be found [here](https://api.npoint.io/cc9798cc5259069d3019/films/)
+ - The live link to the project can be found [here](http://phase-1-wk3-code-challenge.vercel.app/)
 
 
  # Guidelines
