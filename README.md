@@ -25,8 +25,6 @@ theater.
 
  ## Live Link to the Application 
 
- - Before accessing the link, make sure you have initiated the backend process using the command: json-server --watch db.json
-
  - The live link to the project can be found [here](http://phase-1-wk3-code-challenge.vercel.app/)
 
 
