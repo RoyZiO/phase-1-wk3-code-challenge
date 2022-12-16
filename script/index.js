@@ -2,7 +2,7 @@
 
 //First, we fetch the data on films from the mock server to initialize the webpage
 function fetchData() {
-  fetch("  https://royzio.github.io/wk3-challenge-data/db.json")
+  fetch('https://api.npoint.io/cc9798cc5259069d3019/films/')
     .then((response) => response.json())
     .then((data) => appendFirstMovie(data));
 }
@@ -51,7 +51,7 @@ function appendFirstMovie(data) {
 
 //The function 'appendMenu()'fetches the list of movies  
 function appendMenu() {
-  fetch("  https://royzio.github.io/wk3-challenge-data/db.json")
+  fetch('https://api.npoint.io/cc9798cc5259069d3019/films/')
     .then((response) => response.json())
     .then((data) => menuTitles(data));
 }
@@ -138,7 +138,7 @@ function appendIndividualDetails(item) {
 }
 
 function handleBuying(ticketsobj){
-  fetch(`https://royzio.github.io/wk3-challenge-data/db.json/${ticketsobj.id}`, {
+  fetch(`https://api.npoint.io/cc9798cc5259069d3019/films/${ticketsobj.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(ticketsobj),
